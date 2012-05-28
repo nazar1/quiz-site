@@ -1,0 +1,153 @@
+
+body {
+	
+	background-image: url("/quiz/images/bg.png");
+	background-repeat: no-repeat;
+	background-color: #C0DEED; 
+	
+	color: #555555;
+	text-align: left;
+	/* font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; */
+	font-familty: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;
+}
+
+.login, .signup {
+	background-color: #FFFFFF;
+	/* border: 1px solid #81C6FF; */
+	border-radius: 10px;
+	width: 400px;
+	margin: 0 auto;
+}
+
+
+.login a {
+	margin: 50px 0px 20px 30px;
+	font-style: italic;
+}
+
+
+
+/********** header styles *****************/
+#loginHeader {
+	width: 400px;
+	margin: 0 auto;
+}
+#header {
+   /* height: 140px;
+   border-bottom: 4px solid #999999;
+   background-color: #555;
+   */
+    width: 100%;
+    
+}
+
+
+
+#headerInner {
+	background: none repeat scroll 0 0 white;
+    border-radius: 10px 10px 10px 10px;
+    height: 100px;
+    margin: 0 auto;
+    width: 1000px;
+}
+#logo {
+	background: url("/quiz/images/quiz-logo.png") no-repeat scroll left top transparent;
+	height: 75px;
+	width: 150px;
+	float: left;
+	margin-top: 25px;
+}
+
+
+#topMenu {
+    color: #EEEEEE;
+    float: left;
+    font-weight: bold;
+    height: 40px;
+    margin-top: 60px;
+    width: 600px;
+}
+
+#topMenu ul {
+	list-style-type: none;
+    margin: 0 auto;
+    white-space: nowrap;
+    width: 600px;
+}
+
+#topMenu ul li{
+display: inline-block;
+    float: left;
+    height: auto;
+    margin: 0 0 1px;
+    padding: 0;
+    width: auto;
+    
+}
+
+#topMenu a {
+	color: #33ccff;
+    display: block;
+    outline: medium none;
+    padding: 5px 25px 5px 0px;
+}
+
+#topMenu a:hover {
+	color: brown;
+}
+
+
+
+
+/*********************************************************/
+#globalContainer {
+	
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: 1000px;
+}
+
+#content {
+	border-radius: 20px;
+	background-image: url("/quiz/images/white80.png");
+	/*background-color: #C0DEED; */
+}
+
+/*********************************************************/
+#emptyLeft {
+	background-color: transparent; 
+	padding: 1px;
+}
+#left {
+	float: left;
+    width: 250px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+/*********************************************************/
+#middle {
+	background-color: #ffffff;
+	color: #999999;
+	width: 435px;
+	float: left;
+	border: 1px solid #eeeeee;
+	border-radius: 10px;
+	margin:  10px 0;
+	padding: 10px 20px;
+	min-height: 400px;
+}
+
+
+/*********************************************************/
+#right {
+	width: 230px;
+	margin: 10px;
+	float:left;
+    width: 230px;
+    border-radius: 10px;
+    background-color: #ffffff;
+	
+}
