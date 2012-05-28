@@ -1,0 +1,516 @@
+@CHARSET "ISO-8859-1";
+
+/*
+Blue (headings, links) #426389
+Green (headings, links) #617F10;
+Light Blue 2281CF;
+*/
+
+
+/*************************************************************/
+/************** General styles *******************************/
+/*************************************************************/
+
+a.deleteIcon {
+	background: url("/quiz/images/red_cross.png") no-repeat scroll left top transparent;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
+a.demoteIcon {
+	background: url("/quiz/images/demote.png") no-repeat scroll left top transparent;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
+/*********** FONTS ****************************/
+
+.customHeading {
+	font-size: 25px;
+	font-weight: bold;
+	text-transform: capitalize;
+	padding: 10px 10px;
+	color: #426389;
+}
+
+hr {
+	color: #eeeeee;
+	margin: 10px 20px;
+}
+h2, h3, h4, h5{
+	/*
+	background: none repeat scroll 0 0 #FBFDFF;
+	color: #426389;
+	*/
+	color: lightBlue;
+    border-bottom: 1px solid #EBF5FF;
+    
+    display: block;
+    padding: 10px 10px 10px 30px;
+
+}
+
+h6 {
+	font-size: 20px;
+	margin-left: 30px;
+	color: #426389;
+	text-transform: capitalize;
+}
+
+.friendButllet {
+background-image: url("/quiz/images/friend.png");
+    background-position: 3px 50%;
+    background-repeat: no-repeat;
+    list-style: none outside none;	
+}
+
+.challengeButllet {
+background-image: url("/quiz/images/challenge.png");
+    background-position: 3px 50%;
+    background-repeat: no-repeat;
+    list-style: none outside none;	
+}
+
+.noteButllet {
+background-image: url("/quiz/images/note.png");
+    background-position: 3px 50%;
+    background-repeat: no-repeat;
+    list-style: none outside none;	
+}
+
+.quizListButllet {
+background-image: url("/quiz/images/quiz.png");
+    background-position: 3px 50%;
+    background-repeat: no-repeat;
+    list-style: none outside none;	
+}
+
+
+.quizList{
+	padding: 0px 0px 10px 10px;
+}
+.quizList ul {
+	padding: 10px 0px 10px 5px;
+}
+
+.quizList a {
+	display: block; 
+    font-size: 17px;
+    padding: 2px 30px;
+}
+
+a.menu {
+	display: block; 
+    font-size: 18px;
+    padding: 5px 30px;
+}
+a {
+	color: #2281CF;
+	text-decoration: none;
+}
+
+a:hover{
+	color: red;
+}
+
+
+
+
+
+/************** special text styles *************/
+.blockText {
+	color: #426389;
+	font-size: 24px;
+	text-transform: capitalize;
+	padding: 10px 10px 10px 20px;
+	display: block;
+}
+
+.message {
+    background-color: #FFF5BC;
+    border: 2px solid #B8D9B8;
+    color: #0E6273;
+    font-weight: bold;
+    margin: 16px;
+    padding: 8px;
+}
+
+.boldText{
+	color: #2281CF;
+    font-weight: bold;
+    margin: 16px;
+    padding: 8px;
+}
+
+/************** error styles *************/
+div.error {
+	color: red;
+	border-color: red;
+	background-color: white;
+}
+.errorblock {
+	color: #ff0000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+	
+}
+
+
+
+/************* form styles *********************/
+
+#formBox {
+	border: 1px solid #81C6FF;
+	border-radius: 5px;
+	width: 400px;
+	margin: 0 auto;
+}
+
+
+
+label {
+	font-size: 14px;
+	font-weight: normal;
+	color: #555555;
+	margin-left: 35px;
+}
+
+input {
+	border: 1px solid #CFDEDE;
+	border-radius: 5px;
+	color: #777777;
+	padding: 8px 0 7px 12px;
+	margin: 5px 0 15px 30px;
+	width: 240px;
+	
+}
+
+input[type=checkbox] {
+	margin-left: 30px;
+	width: 10px;
+}
+
+
+
+
+textarea {
+	border: 1px solid #CFDEDE;
+	color: #777777;
+	padding: 8px 0 7px 12px;
+	margin: 5px 0 15px 30px;
+	width: 400px;
+}
+
+select {
+	margin: 5px 0 15px 30px;
+
+}
+
+option {
+	text-transform: capitalize;
+}
+
+
+
+
+
+
+.redButton{
+	background: -moz-linear-gradient(0% 100% 90deg, #891100 0%, #B51700 50%, #C63929 50%, #EE432E 100%) repeat scroll 0 0 transparent;
+    border: 1px solid #951100;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 0 1px rgba(255, 115, 100, 0.4) inset, 0 1px 3px #333333;
+    color: #FFFFFF;
+    font-weight: bold;
+    line-height: 1;
+    padding: 4px 6px 6px;
+    text-align: center;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8);
+    width: 160px;
+	
+}
+
+input[type="submit"], input[type="reset"] {
+	background: -moz-linear-gradient(center top , #33A0E8, #2180CE) repeat scroll 0 0 transparent;
+    border-color: #2270AB #18639A #0F568B;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), 0 1px 0 #83C5F1 inset;
+    color: #FFFFFF;
+    text-shadow: 0 1px 2px #355782;
+    
+    font-size: 13px;
+    font-familty: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;
+	width: 140px;
+}
+
+input[type="submit"]:hover , input[type="reset"]:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64) );
+	background:-moz-linear-gradient( center top, #ffab23 5%, #ffec64 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64');
+	background-color:#ffab23;
+}.yellowButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+
+
+
+/*************************************************************/
+/* Header styles */
+/*************************************************************/
+
+
+
+
+
+#siteTitle {
+	color: #282828;
+    display: block;
+    font: small-caps bold 30px Arial,Verdana,Tahoma,sans-serif;
+    margin: 10px;
+    
+}
+
+
+#slogan {
+	color: #a0c060;
+	font-size: 16px;
+	
+}
+
+/*************************************************************/
+/* left column
+/*************************************************************/
+
+
+
+#userProfile{
+	padding-left: 10px;
+
+}
+
+
+
+#userInfo {
+/*
+    float: left;
+    width: 250px;
+*/
+}
+
+
+#menu td {
+	padding-left: 20px;
+}
+
+#userInfo ul {
+	list-style-type: none;
+	padding-left: 10px;
+	
+}
+
+#userInfo ul li {
+	text-decoration: none;
+}
+
+#friends {
+	background: none;
+}
+
+#friends li {
+    color: #31496f;
+    display: block;
+    font-weight: bold;
+    padding-left: 20px;
+    text-transform: capitalize
+    }
+/*************************************************************/
+/* middle column
+/*************************************************************/
+
+#quizes {
+	
+}
+
+#quizDescription {
+	
+}
+
+#middle table {
+	width: 100%;
+	/*border-collapse: collapse;*/
+}
+
+table.detailsList {
+	border-bottom: 1px solid #E8E8E8;
+	padding-bottom: 10px;
+}
+
+tr {
+	/*background-color: #F5FAFF; */
+}
+th {
+	font-size: 12px;
+	/*padding: 6px 15px;
+	color: #003399;*/
+}
+
+td {
+/*	border-bottom: 1px solid #CCCCCC;
+	padding: 0px 0px 15px 5px;
+	 */
+	
+}
+
+td.date {
+	width: 30px;
+	color: #999999;
+}
+
+
+td.text {
+	/* padding: 0px 0px 15px 5px; */
+	color: #999999;
+}
+
+
+/*************************************************************/
+/* right column
+/*************************************************************/
+
+
+
+
+/*************************************************************/
+/* footer */
+/*************************************************************/
+
+#footer {
+    background: none repeat scroll 0 0 #FFFFFF;
+    bottom: 0;
+    height: 100px;
+    position: relative;
+    width: 100%;
+}
+
+/* button styles */
+#formBox input.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:2px 13px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+}
+.myButton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+}
+
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+/* signup page */
+#signup {
+	widht: 400px;
+	/* float: right; */
+}
+
+
+#formBox {
+	margin: 0 auto;	
+}
+
+#formBox table{
+	cell-spacing: 1px;
+	cell-padding: 0px;
+}
+
+td.label {
+	font-size: 13px;
+	line-height: 1.28;
+	color: #1D2A5B;
+	padding-right: 3px;
+	text-align: right;
+	font-family:lucida Grande, tahoma,verdana,arial,sans-serif;
+	
+}
+
+
+/* button styles */
+#formBox input.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+	box-shadow:inset 0px 1px 0px 0px #caefab;
+	background-color:#77d42a;
+	border:1px solid #268a16;
+	display:inline-block;
+	color:#306108;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #aade7c;
+	width: 100px;
+	height: 35px;	
+}
+#formBox input.myButton:hover {
+	background-color:#5cb811;	
+}
+#formBox input.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+/******************************************/
+#footer {
+	border-top: 1px solid #2281CF;
+	margin-top: 50px;
+}
+
+/******************************************/
+#admin #left {
+	width: 35%;
+	
+}
+#admin #middle {
+	width: 60%;
+}
+
+#admin #left input {
+	width: 150px;
+	margin: 5px 0 15px 5px;
+}
+
+#admin #left input[type="submit"] {
+	width: 60px;
+	padding: 6px;
+}
+
+
