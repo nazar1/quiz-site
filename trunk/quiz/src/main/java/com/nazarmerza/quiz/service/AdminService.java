@@ -15,11 +15,12 @@ public interface AdminService {
 	public void deactivateAnnouncement(Long id);
 	public void deleteAnnouncement(Long id);
 	
+	public List<User> getRecentUsers(int count);
 	
 	public void removeUserAccount(Long id);
 	public void promoteUserStatus(Long id);
-	public void removeQuiz(Quiz quiz);
-	public void removeQuizHistory(Quiz quiz);
+	//public void removeQuiz(Quiz quiz);
+	//public void removeQuizHistory(Quiz quiz);
 	
 	/* site statistics */
 	public Statistics getStatistics();

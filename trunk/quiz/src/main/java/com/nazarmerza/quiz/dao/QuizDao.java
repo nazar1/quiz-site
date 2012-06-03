@@ -9,7 +9,7 @@ public interface QuizDao extends GenericDao<Quiz, Long>{
 
 	//public List<Quiz> getAllCreatedQuizes();
 	//public List<Quiz> getAllTakenQuizes();
-
+	
 	public List<Quiz> getRecentlyCreatedQuizes(int maxResults);
 	public List<Quiz> getRecentlyCreatedQuizes(User user, int maxResults);
 	public List<Quiz> getAllUserCreatedQuizes(User user);

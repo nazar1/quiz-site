@@ -1,6 +1,7 @@
 package com.nazarmerza.quiz.service;
 
 import java.sql.Time;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,97 +22,61 @@ public class QuizServiceImpl implements QuizService{
 
 	private QuizDao quizDao;
 	private QuizHistoryDao quizHistoryDao;
-	private int maxResult;
+	private static final int MAX_COUNT = 5;
 	
 	@Autowired
 	public QuizServiceImpl(QuizDao quizDao, QuizHistoryDao quizHistoryDao) {
 		this.quizDao = quizDao;
 		this.quizHistoryDao = quizHistoryDao;
-		// set default number of max results
-		this.maxResult = 5;
 	}
-
-	
-	public int getMaxResults() {
-		return maxResult;
-	}
-
-	public void setMaxResults(int maxResults) {
-		this.maxResult = maxResults;
-	}
-
 
 	@Transactional
-	public void createQuiz(Quiz quiz) {
+	public Quiz save(Quiz quiz) {
 		quizDao.save(quiz);
+		return quiz;
+	}
+	
+	@Transactional
+	public void delete(Quiz quiz) {
+		quizDao.delete(quiz.getId());
 	}
 
 	@Transactional
-	public Quiz getQuiz(Long id) {
+	public Quiz findQuiz(Long id) {
 		return quizDao.findById(id);
 	}
-
+	
 	@Transactional
 	public List<Quiz> getPopularQuizes() {
-		return quizDao.getPopularQuizes(maxResult);
+		// find N quizzes with max occuring count
+		List<Long> quizIds = quizHistoryDao.findFrequentlyTakenQuizzes(MAX_COUNT);
+		// get these quizzes from quizDao
+		List<Quiz> popularQuizzes = new LinkedList<Quiz>();
+		
+		for (Long id: quizIds){
+			Quiz quiz = quizDao.findById(id);
+			if (quiz != null) {
+				popularQuizzes.add(quiz);
+			}
+		}
+		return popularQuizzes;
 	}
+	
 
 	@Transactional
 	public List<Quiz> getRecentlyCreatedQuizes() {
-		return quizDao.getRecentlyCreatedQuizes(maxResult);
+		return quizDao.getRecentlyCreatedQuizes(MAX_COUNT);
 	}
 	
 	@Transactional
 	public List<Quiz> getRecentlyCreatedQuizes(User user) {
-		return quizDao.getRecentlyCreatedQuizes(user, maxResult);
+		return quizDao.getRecentlyCreatedQuizes(user, MAX_COUNT);
 	}
 	
 	@Transactional
 	public List<Quiz> getRecentlyTakenQuizes() {
-		return quizDao.getRecentlyCreatedQuizes(maxResult);
-	}
-	
-	@Transactional
-	public List<User> getHighestPerformers() {
-		// TODO Auto-generated method stub
-		return null;
+		return quizDao.getRecentlyCreatedQuizes(MAX_COUNT);
 	}
 
-
-
-	
-	@Transactional
-	public void recordQuizHistory(Quiz quiz, List<Question> answeredQuestions,
-			Long completionTime, User user){
-		int correctAnswers = 0;
-		for(Question answeredQuestion: answeredQuestions){
-			for(Question question: quiz.getQuestions()){
-				if(question.validateResponse(answeredQuestion.getAnswer())){
-					correctAnswers =+ 1;
-				}
-			}
-		}
-		double score = ((correctAnswers * 100.0) / quiz.getNumberOfQuestion());
-		
-		QuizHistory quizHistory = new QuizHistory();
-		quizHistory.setQuiz(quiz);
-		quizHistory.setUser(user);
-		quizHistory.setCorrectAnswers(correctAnswers);
-		quizHistory.setNumberOfQuestions(quiz.getNumberOfQuestion());
-		quizHistory.setScore(score);
-		quizHistory.setMiliseconds(completionTime);
-		quizHistoryDao.save(quizHistory);
-		
-	}
-
-	@Transactional
-	public List<QuizHistory> getRecentQuizTakingActivities() {
-		return quizHistoryDao.getRecentQuizTakingHistory(maxResult * 5);
-	}
-
-	@Transactional
-	public List<QuizHistory> getRecentQuizTakingActivities(User user) {
-		return quizHistoryDao.getRecentQuizTakingHistory(user, maxResult);
-	}
 	
 }

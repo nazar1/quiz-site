@@ -1,4 +1,4 @@
-package com.nazarmerza.quiz.web.user;
+package com.nazarmerza.quiz.web.user.quiz;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -58,7 +58,7 @@ public class AddQuizQuestions {
 		quiz.addQuestion(questions.getQuestionFillInBlank());
 		quiz.setNumberOfQuestion(2);
 		quiz.setRating(1);
-		quizService.createQuiz(quiz);
+		quizService.save(quiz);
 		
 		User user = (User) session.getAttribute("user");
 		userService.save(user);

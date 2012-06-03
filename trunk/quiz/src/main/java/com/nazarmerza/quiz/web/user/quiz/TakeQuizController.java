@@ -1,4 +1,4 @@
-package com.nazarmerza.quiz.web.user;
+package com.nazarmerza.quiz.web.user.quiz;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -33,18 +33,23 @@ import com.nazarmerza.quiz.domain.QuizHistory;
 import com.nazarmerza.quiz.domain.User;
 import com.nazarmerza.quiz.domain.types.QuestionType;
 import com.nazarmerza.quiz.domain.validation.Answer;
+import com.nazarmerza.quiz.service.QuizHistoryService;
 import com.nazarmerza.quiz.service.QuizService;
 import com.nazarmerza.quiz.service.UserService;
 import com.nazarmerza.quiz.util.Questions;
 import javax.validation.Validator;
 
 @Controller
-@RequestMapping("/user/takeQuiz")
+@RequestMapping("/user/quiz")
 @SessionAttributes({"quiz", "questions"})
 public class TakeQuizController {
+	
+	Long completionTime;
+	Long startTime;
 
 	private UserService userService;
 	private QuizService quizService;
+	private QuizHistoryService quizHistoryServcie;
 	private Validator validator;
 
 	//private Quiz currentQuiz;
@@ -52,9 +57,10 @@ public class TakeQuizController {
 
 	@Autowired
 	public TakeQuizController(UserService userService, QuizService quizService,
-			Validator validator) {
+			QuizHistoryService quizHistoryServcie, Validator validator) {
 		this.userService = userService;
 		this.quizService = quizService;
+		this.quizHistoryServcie = quizHistoryServcie;
 		this.validator = validator;
 	}
 
@@ -62,7 +68,7 @@ public class TakeQuizController {
 	public String setupForm(@PathVariable String id, Model model,
 			HttpSession session) {
 
-		Quiz quiz = quizService.getQuiz(new Long(id));
+		Quiz quiz = quizService.findQuiz(new Long(id));
 
 		// Get a form backing object where answer are set to empty string;
 		Questions questions= new Questions(quiz.getQuestions());
@@ -72,7 +78,7 @@ public class TakeQuizController {
 		Long startTime = System.currentTimeMillis();
 		session.setAttribute("startTime", startTime);
 
-		return "/user/takeQuiz";
+		return "/user/quiz";
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
@@ -80,23 +86,22 @@ public class TakeQuizController {
 			@ModelAttribute("questions") Questions questions,
 			BindingResult result, Model model, HttpSession session) {
 
-		Long completionTime = System.currentTimeMillis();
-		Long startTime = (Long) session.getAttribute("startTime");
+		completionTime = System.currentTimeMillis();
+		startTime = (Long) session.getAttribute("startTime");
 		
 		this.validate(questions, result);
 		if (result.hasErrors()) {
-			return "/user/takeQuiz";
+			return "/user/quiz";
 		}
 		
 		
-		List<Question> answredQuestion = new ArrayList<Question>();
-		answredQuestion.add(questions.getQuestionQuery());
-		answredQuestion.add(questions.getQuestionFillInBlank());
+		QuizHistory quizHistory = new QuizHistory(
+				(Quiz) session.getAttribute("quiz"),
+				(User) session.getAttribute("user"),
+				2, 
+				completionTime - startTime);
 		
-		quizService.recordQuizHistory((Quiz) session.getAttribute("quiz"), 
-				answredQuestion, 
-				completionTime - startTime,
-				(User) session.getAttribute("user"));
+		quizHistoryServcie.save(quizHistory);
 		
 		return "redirect:/user/user";
 	}

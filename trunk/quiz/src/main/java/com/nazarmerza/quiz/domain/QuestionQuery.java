@@ -9,7 +9,6 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-//@Table("question_query")
 @DiscriminatorValue("QQ")
 public class QuestionQuery extends Question {
 
@@ -19,8 +18,14 @@ public class QuestionQuery extends Question {
 		super.setType(QuestionType.QUESTION_RESPONSE);
 	}
 	
+	
+	public QuestionQuery(String question, String answer, Quiz quiz) {
+		super(QuestionType.QUESTION_RESPONSE, answer, quiz);
+		this.question = question;
+	}
+
+
 	@NotEmpty(message = "Question must not be empty")
-	//@NotEmpty(message="{NotEmpty.question.question}")
 	@Column(name = "QUESTION")
 	public String getQuestion() {
 		return question;

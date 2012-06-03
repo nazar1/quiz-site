@@ -52,6 +52,9 @@
 				<value>com.nazarmerza.quiz.domain.User</value>
 				<value>com.nazarmerza.quiz.domain.Profile</value>
 				<value>com.nazarmerza.quiz.domain.Message</value>
+				<value>com.nazarmerza.quiz.domain.Note</value>
+				<value>com.nazarmerza.quiz.domain.FriendRequest</value>
+				<value>com.nazarmerza.quiz.domain.Challenge</value>
 				<value>com.nazarmerza.quiz.domain.Announcement</value>
 				<value>com.nazarmerza.quiz.domain.Quiz</value>
 				<value>com.nazarmerza.quiz.domain.Question</value>

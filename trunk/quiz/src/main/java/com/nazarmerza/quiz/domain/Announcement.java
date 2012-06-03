@@ -40,6 +40,7 @@ public class Announcement implements Serializable{
 		this.setCreator(creator);
 		this.setAnnouncement(announcement);
 	}
+	
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)

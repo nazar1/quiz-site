@@ -5,6 +5,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -34,11 +35,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Table(name = "USER")
 public class User implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	private Long id;
 
 	private String userName;
@@ -47,7 +43,7 @@ public class User implements Serializable {
 	private String securityQuestion;
 	private String securityAnswer;
 	private String authority;
-	private Profile profile;
+	//private Profile profile;
 	private Date created;
 	private List<User> friends = new ArrayList<User>();
 
@@ -137,6 +133,7 @@ public class User implements Serializable {
 		this.created = created;
 	}
 
+	/*
 	@Embedded
 	public Profile getProfile() {
 		return profile;
@@ -145,6 +142,7 @@ public class User implements Serializable {
 		this.profile = profile;
 		//profile.setUser(this);
 	}
+	*/
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "USER_FRIEND",
@@ -159,29 +157,56 @@ public class User implements Serializable {
 		this.friends = friends;
 	}
 	
-	/* */
-	
+
+
+	/* business methods */
 	public void addFriend(User friend){
 		this.friends.add(friend);
-		//friend.addFriend(this);
 	}
 	
-	/*
-	//@Embedded
-	//@OneToOne(mappedBy = "profile", cascade = CascadeType.ALL)
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", 
-			cascade = CascadeType.ALL)
-	//@PrimaryKeyJoinColumn
-	public Profile getProfile() {
-		return profile;
+	public void  removeFriend(User friend){
+		
+		int index = this.friends.indexOf(friend);
+		if(index >= 0) {
+			getFriends().remove(index);
+		}
+
 	}
 	
-	*/
+	/* common methods */
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((authority == null) ? 0 : authority.hashCode());
+		result = prime * result + ((created == null) ? 0 : created.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((friends == null) ? 0 : friends.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result
+				+ ((securityAnswer == null) ? 0 : securityAnswer.hashCode());
+		result = prime
+				* result
+				+ ((securityQuestion == null) ? 0 : securityQuestion.hashCode());
+		result = prime * result
+				+ ((userName == null) ? 0 : userName.hashCode());
+		return result;
+	}
 
-
-
-
-
-
-
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (!(obj instanceof User)) return false;
+		
+		User other = (User) obj;
+		if ( !this.getId().equals(other.getId())) return false;
+		
+		return true;
+	}
+	
 }

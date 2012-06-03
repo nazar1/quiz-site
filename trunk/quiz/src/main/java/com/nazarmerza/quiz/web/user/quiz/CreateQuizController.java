@@ -1,4 +1,4 @@
-package com.nazarmerza.quiz.web.user;
+package com.nazarmerza.quiz.web.user.quiz;
 
 import java.util.ArrayList;
 import java.util.Calendar;
