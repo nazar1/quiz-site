@@ -33,9 +33,17 @@ public abstract class Question implements Serializable{
 	protected Long id;
 	protected QuestionType type;
 	protected String answer;
-	//protected int order;
 	protected Quiz Quiz;
 	
+	protected Question(){
+		
+	}
+	protected Question(QuestionType type, String answer,
+			com.nazarmerza.quiz.domain.Quiz quiz) {
+		this.type = type;
+		this.answer = answer;
+		Quiz = quiz;
+	}
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -57,7 +65,6 @@ public abstract class Question implements Serializable{
 	}
 
 	@NotEmpty(message = "Answer must not be empty", groups=Answer.class)
-	//@NotEmpty(message = "Answer must not be empty")
 	@Column(name = "ANSWER", length = 100, nullable = false)
 	public String getAnswer() {
 		return answer;
@@ -66,18 +73,6 @@ public abstract class Question implements Serializable{
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-
-	/*
-	@Column(name = "ORDER")
-	public int getOrder() {
-		return order;
-	}
-
-	public void setOrder(int order) {
-		this.order = order;
-	}
-	
-	*/
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "QUIZ_ID")
@@ -88,12 +83,6 @@ public abstract class Question implements Serializable{
 		Quiz = quiz;
 	}
 	
-	
-	/**
-	 * 
-	 * @param reponse
-	 * @return
-	 */
 	public  boolean validateResponse(String reponse){
 		return false;
 	}

@@ -10,19 +10,19 @@ import com.nazarmerza.quiz.domain.User;
 
 public interface QuizService {
 	
-	public void createQuiz(Quiz quiz);
-	public Quiz getQuiz(Long id);
-		
-	public List<Quiz> getPopularQuizes();
+	public Quiz findQuiz(Long id);
+	public Quiz save(Quiz quiz);
+	public void delete(Quiz quiz);
+	
 	public List<Quiz> getRecentlyCreatedQuizes();
+	public List<Quiz> getPopularQuizes();
 	public List<Quiz> getRecentlyCreatedQuizes(User user);
+
+		
+	//public List<QuizHistory> getRecentQuizTakingActivities();
+	//public List<QuizHistory> getRecentQuizTakingActivities(User user);
+	//public void saveQuizHistory(Quiz quiz, List<Question> answeredQuestions, 
+	//		Long completionTime,User user);
 	//public List<Quiz> getRecentlyTakenQuizes();
 	//public List<Quiz> getUserTakenQuizes(User user);
-	
-	public List<User> getHighestPerformers();
-	
-	public void recordQuizHistory(Quiz quiz, List<Question> answeredQuestions, 
-			Long completionTime,User user);
-	public List<QuizHistory> getRecentQuizTakingActivities();
-	public List<QuizHistory> getRecentQuizTakingActivities(User user);
 }

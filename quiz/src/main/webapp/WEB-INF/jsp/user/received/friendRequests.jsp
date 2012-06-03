@@ -5,7 +5,7 @@
 
 <div class="blockContent">
 	<c:choose>
-	 <c:when test="${empty friendRequestMessages}" >
+	 <c:when test="${empty friendRequests}" >
 		<p>There are no friend Requests.</p>
 	</c:when>
 	<c:otherwise>
@@ -15,7 +15,7 @@
 			<th>Date</th>
 
 		</tr>
-		<c:forEach items="${friendRequestMessages}" var="message">
+		<c:forEach items="${friendRequests}" var="message">
 			<tr>
 				<td><c:out value="${message.sender.userName}" /></td>
 				<td><fmt:formatDate type="date" value="${user.created}" /></td>

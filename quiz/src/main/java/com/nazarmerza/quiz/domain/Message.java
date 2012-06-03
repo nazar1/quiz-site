@@ -17,40 +17,33 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import com.nazarmerza.quiz.domain.types.MessageType;
 import com.nazarmerza.quiz.domain.types.Status;
 
 @Entity
 @Table(name = "MESSAGE")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="MSG_TYPE")
-public class Message implements Serializable{
+public abstract class Message implements Serializable{
 	
 	protected Long id;
 	protected User sender;
 	protected User receiver;
 	protected Status status;
-	protected MessageType messageType;
+	//protected MessageType messageType;
 	protected String message;
 	protected Date created;
 	
-	public Message () {
+	protected Message () {
 		this.status = Status.ACTIVE;
 		this.created = new Date();
 	}
 	
 	
-	public Message(User sender, User receiver,
-			MessageType messageType) {
-		
+	protected Message(User sender, User receiver, String message) {
 		this();
 		this.sender = sender;
 		this.receiver = receiver;
-		this.setMessageType(messageType);
-		
-		// this.setMessage(message);
-	
+		this.message = message;		
 	}
 
 	@Id
@@ -73,6 +66,7 @@ public class Message implements Serializable{
 		this.status = status;
 	}
 
+/*
 	@Column(name = "MESSAGE_TYPE", nullable=false)
 	public MessageType getMessageType() {
 		return messageType;
@@ -95,7 +89,7 @@ public class Message implements Serializable{
 			break;
 		}
 	}
-
+*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "CREATED", nullable=false)
 	public Date getCreated() {
@@ -134,5 +128,40 @@ public class Message implements Serializable{
 	public void setCreated(Date created) {
 		this.created = created;
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((message == null) ? 0 : message.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Message other = (Message) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (message == null) {
+			if (other.message != null)
+				return false;
+		} else if (!message.equals(other.message))
+			return false;
+		return true;
+	}
+	
+	
 	
 }

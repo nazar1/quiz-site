@@ -12,10 +12,18 @@ import com.nazarmerza.quiz.domain.types.MessageType;
 @DiscriminatorValue("CH_MS")
 public class ChallengeMessage extends Message {
 	
+	private static final String CHALLENGE_MESSAGE = 
+			"You have been challenged to take this quiz by user, ";
+	
 	private Quiz quiz;
 	
 	public ChallengeMessage(){
-		this.messageType = MessageType.CHALLENGE;
+	}
+	
+	public ChallengeMessage(User sender, User receiver,
+			Quiz quiz) {
+		super(sender, receiver, CHALLENGE_MESSAGE);
+		this.quiz = quiz;
 	}
 
 	@ManyToOne

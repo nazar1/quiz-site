@@ -58,6 +58,30 @@ public class Quiz implements Serializable{
 		this.created = new Date();
 		this.rating = 1;
 	}
+	
+	
+
+	public Quiz(String quizTitle, String description,
+			Category category, boolean random, boolean multipage,
+			boolean immediateCorrection, boolean practiceMode, int rating,
+			int numberOfQuestion, List<Question> questions, User creator,
+			Date created) {
+		
+		this.quizTitle = quizTitle;
+		this.description = description;
+		this.category = category;
+		this.random = random;
+		this.multipage = multipage;
+		this.immediateCorrection = immediateCorrection;
+		this.practiceMode = practiceMode;
+		this.rating = rating;
+		this.numberOfQuestion = numberOfQuestion;
+		this.questions = questions;
+		this.creator = creator;
+		this.created = created;
+	}
+
+
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -175,25 +199,7 @@ public class Quiz implements Serializable{
 	public void setCreator(User creator) {
 		this.creator = creator;
 	}
-	/*
-	@OneToOne(mappedBy = "quiz")
-	public Question getQuestion() {
-		return question;
-	}
 
-	public void setQuestion(Question question) {
-		this.question = question;
-	}
-*/
-	
-	
-	
-	
-	
-
-	/************************************************/
-	
-	
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="quiz", fetch=FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
@@ -210,30 +216,4 @@ public class Quiz implements Serializable{
 		question.setQuiz(this);
 	}
 	
-	/************************************************/
-	
-	
-	
-	/************************************************/
-	/*
-	private List<QuestionQuery> questions1 =
-			new AutoPopulatingList<QuestionQuery>(new QuestionFactory(this));
-
-	@Transient
-	public List<QuestionQuery> getQuestions1() {
-		return questions1;
-	}
-
-	public void setQuestions1(List<QuestionQuery> questions1) {
-		this.questions1 = questions1;
-	}
-	public void addQuestion1(QuestionQuery questionQuery){
-		questionQuery.setQuiz(this);
-		questions1.add(questionQuery);
-		
-	}
-	
-	*/
-	
-
 }

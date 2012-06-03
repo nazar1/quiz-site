@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.nazarmerza.quiz.domain.Announcement;
 import com.nazarmerza.quiz.domain.User;
 import com.nazarmerza.quiz.service.AdminService;
+import com.nazarmerza.quiz.service.ApplicationService;
 import com.nazarmerza.quiz.service.QuizService;
 import com.nazarmerza.quiz.service.UserService;
 
@@ -24,25 +25,22 @@ import com.nazarmerza.quiz.service.UserService;
 public class AdminHomeController {
 	
 	private AdminService adminService;
-	private UserService userService;
-	private QuizService quizService;
-	private Validator validator;
+	private ApplicationService applicationService;
 	
 	@Autowired
-	public AdminHomeController(AdminService adminService, UserService userService,
-			QuizService quizService, Validator validator) {
+	public AdminHomeController(AdminService adminService, 
+			ApplicationService applicationService,
+			Validator validator) {
 		
 		this.adminService = adminService;
-		this.userService = userService;
-		this.quizService = quizService;
-		this.validator = validator;
+		this.applicationService = applicationService;
 	}
 	
 	@RequestMapping(value="/admin/admin", method = RequestMethod.GET)
 	public String adminHomePage(Model model) {
-		model.addAttribute("announcements", userService.getActiveAnnouncements());
+		model.addAttribute("announcements", applicationService.getActiveAnnouncements());
 		model.addAttribute("statistics", adminService.getStatistics());
-		model.addAttribute("recentUsers", userService.getRecentUsers(10));
+		model.addAttribute("recentUsers", adminService.getRecentUsers(10));
 		return "/admin/home";
 	}
 	

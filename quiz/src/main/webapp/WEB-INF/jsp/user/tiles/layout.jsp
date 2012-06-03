@@ -38,7 +38,7 @@
 			
 			<div id="left">
 			<div id="userInfo">
-				<tiles:insertAttribute name="menu" />
+				<tiles:insertAttribute name="left" />
 			</div>
 			</div>
 			<div id="middle">

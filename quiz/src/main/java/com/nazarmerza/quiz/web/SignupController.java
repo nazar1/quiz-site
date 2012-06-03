@@ -60,18 +60,7 @@ public class SignupController {
 	}
 	
 	private void createUserAccount(User user) {	
-		try {
-			Profile profile = new Profile();
-			user.setProfile(profile);
-			userService.createUserAccount(user);
-			
-		} catch (UserNameExistsException e) {
-		
-			e.printStackTrace();
-		} catch (AccountExistsException e) {
-	
-			e.printStackTrace();
-		}
+			userService.save(user);
 	}
 }
 

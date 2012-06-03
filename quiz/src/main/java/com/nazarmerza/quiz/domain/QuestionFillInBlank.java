@@ -16,6 +16,15 @@ public class QuestionFillInBlank extends Question{
 	public QuestionFillInBlank(){
 		super.setType(QuestionType.FILL_IN_THE_BLANK);
 	}
+	
+	public QuestionFillInBlank(String pre, String post, 
+			String answer, Quiz quiz) {
+		super(QuestionType.FILL_IN_THE_BLANK, answer, quiz);
+		this.pre = pre;
+		this.post = post;
+	}
+
+
 
 	@Column(name = "PRE")
 	public String getPre() {

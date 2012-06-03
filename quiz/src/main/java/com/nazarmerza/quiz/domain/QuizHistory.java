@@ -24,9 +24,8 @@ public class QuizHistory implements Serializable{
 	private Long id;
 	private Quiz quiz;
 	private User user;
-	private int correctAnswers;
-	private int numberOfQuestions;
-	private double score;
+	private int correctAnswersNum;
+	private Double score;
 	private Long miliseconds;
 	private Date created;
 	
@@ -34,6 +33,18 @@ public class QuizHistory implements Serializable{
 		this.created = new Date();
 	}
 	
+	
+	public QuizHistory(Quiz quiz, User user, int correctAnswersNum,
+			Long miliseconds) {
+
+		this.quiz = quiz;
+		this.user = user;
+		this.correctAnswersNum = correctAnswersNum;
+		this.score = calculateScore();
+		this.miliseconds = miliseconds;
+	}
+
+
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "QHISTORY_ID")
@@ -64,22 +75,14 @@ public class QuizHistory implements Serializable{
 		this.user = user;
 	}
 
-	@Column(name = "CORRECT_ANSWERS")
-	public int getCorrectAnswers() {
-		return correctAnswers;
+	@Column(name = "CORRECT_ANSWERS_NUM")
+	public int getCorrectAnswersNum() {
+		return correctAnswersNum;
 	}
-	public void setCorrectAnswers(int correctAnswers) {
-		this.correctAnswers = correctAnswers;
+	public void setCorrectAnswersNum(int correctAnswersNum) {
+		this.correctAnswersNum = correctAnswersNum;
 	}
 	
-	
-	@Column(name = "NUM_OF_QUESTIONS")
-	public int getNumberOfQuestions() {
-		return numberOfQuestions;
-	}
-	public void setNumberOfQuestions(int numberOfQuestions) {
-		this.numberOfQuestions = numberOfQuestions;
-	}
 	
 	@Column(name = "SCORE")
 	public double getScore() {
@@ -112,5 +115,10 @@ public class QuizHistory implements Serializable{
 	@Transient
 	public Time getTime(){
 		return new Time(this.getMiliseconds());
+	}
+	
+	//
+	private Double calculateScore() {
+		return 1.0;
 	}
 }

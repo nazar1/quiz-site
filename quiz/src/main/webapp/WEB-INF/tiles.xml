@@ -6,7 +6,8 @@
 <tiles-definitions>
 
     
-    <!-- Athentication tiles -->
+    <!-- account and authentication pages -->
+    
     <definition name="baseDefinition2"
         template="/WEB-INF/jsp/authentication/tiles/layout.jsp">
         <put-attribute name="title" value="" />
@@ -16,7 +17,7 @@
     
      <definition name="login" extends="baseDefinition2">
         <put-attribute name="title" value="User Login page" />
-        <put-attribute name="menu" value="" />
+        <put-attribute name="left" value="" />
         <put-attribute name="right" value="" />
         <put-attribute name="content" value="/WEB-INF/jsp/authentication/login.jsp" />
     </definition>
@@ -31,74 +32,95 @@
         template="/WEB-INF/jsp/user/tiles/layout.jsp">
         <put-attribute name="title" value="" />
         <put-attribute name="header" value="/WEB-INF/jsp/user/tiles/header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/jsp/user/tiles/menu.jsp" />
+        <put-attribute name="left" value="/WEB-INF/jsp/user/tiles/left.jsp" />
         <put-attribute name="content" value="" />
         <put-attribute name="right" value="/WEB-INF/jsp/user/tiles/right.jsp" />
         <put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
     </definition>
-    
-     <definition name="/user/test" extends="baseDefinition">
-        <put-attribute name="title" value="test" />
-        <put-attribute name="content" value="/WEB-INF/jsp/test.jsp" />
-    </definition>
-    
+         
     <definition name="home" extends="baseDefinition">
         <put-attribute name="title" value="Home" />
-        <put-attribute name="menu" value="" />
+        <put-attribute name="left" value="" />
         <put-attribute name="content" value="/WEB-INF/jsp/home.jsp" />
     </definition>
-    
-   
-        
+         
     <definition name="/user/user" extends="baseDefinition">
         <put-attribute name="title" value="User Page" />
         <put-attribute name="content" value="/WEB-INF/jsp/user/user.jsp" />
     </definition>
     
-   <definition name="/user/friendRequestMessages" extends="baseDefinition">
+    
+    
+   <!-- user pages: received messages -->
+   
+   <definition name="/user/friendRequests" extends="baseDefinition">
         <put-attribute name="title" value="User Page" />
-        <put-attribute name="content" value="/WEB-INF/jsp/user/message/friendRequestMessages.jsp" />
+        <put-attribute name="content" value="/WEB-INF/jsp/user/received/friendRequests.jsp" />
     </definition>
     
-    <definition name="/user/createQuiz" extends="baseDefinition">
-        <put-attribute name="title" value="Create Quiz Page" />
-        <put-attribute name="content" value="/WEB-INF/jsp/user/createQuiz.jsp" />
-        <put-attribute name="right" value="" />
+       <definition name="/user/notes" extends="baseDefinition">
+        <put-attribute name="title" value="User Page" />
+        <put-attribute name="content" value="/WEB-INF/jsp/user/received/notes.jsp" />
+    </definition>
+       <definition name="/user/challenges" extends="baseDefinition">
+        <put-attribute name="title" value="User Page" />
+        <put-attribute name="content" value="/WEB-INF/jsp/user/received/challenges.jsp" />
     </definition>
     
-        <definition name="/user/takeQuiz" extends="baseDefinition">
-        <put-attribute name="title" value="Take Quiz Page" />
-        <put-attribute name="content" value="/WEB-INF/jsp/user/takeQuiz.jsp" />
-        <put-attribute name="right" value="" />
-    </definition>
     
-    <definition name="/user/addQuestions" extends="baseDefinition">
-        <put-attribute name="title" value="Add questions to the quiz." />
-        <put-attribute name="content" value="/WEB-INF/jsp/user/addQuestions.jsp" />
-        <put-attribute name="right" value="" />
-    </definition>
     
-    <definition name="/user/search" extends="baseDefinition">
+    <!-- user pages: send message pages -->
+    
+    <!-- friends management pages -->
+        <definition name="/user/searchUsers" extends="baseDefinition">
         <put-attribute name="title" value="Search users" />
-        <put-attribute name="content" value="/WEB-INF/jsp/search/search.jsp" />
+        <put-attribute name="content" value="/WEB-INF/jsp/user/friends/search.jsp" />
         <put-attribute name="right" value="" />
     </definition>
     
    <definition name="/user/searchResult" extends="baseDefinition">
         <put-attribute name="title" value="Search users" />
-        <put-attribute name="content" value="/WEB-INF/jsp/search/searchResult.jsp" />
+        <put-attribute name="content" value="/WEB-INF/jsp/user/friends/searchResult.jsp" />
         <put-attribute name="right" value="" />
     </definition>
-    <definition name="/user/friendsList" extends="baseDefinition">
+    
+     <definition name="/user/friendsList" extends="baseDefinition">
         <put-attribute name="title" value="Send User Note" />
         <put-attribute name="content" value="/WEB-INF/jsp/user/friends/friendsList.jsp" />
         <put-attribute name="right" value="" />
     </definition>
+    
     <definition name="/user/sendNote" extends="baseDefinition">
         <put-attribute name="title" value="Send User Note" />
         <put-attribute name="content" value="/WEB-INF/jsp/user/friends/sendNote.jsp" />
         <put-attribute name="right" value="" />
     </definition>
+    
+    
+    
+    <!-- quiz management pages -->
+    <definition name="/user/quiz" extends="baseDefinition">
+        <put-attribute name="title" value="Take Quiz Page" />
+        <put-attribute name="content" value="/WEB-INF/jsp/user/action/quiz.jsp" />
+        <put-attribute name="right" value="" />
+    </definition>
+    
+    <definition name="/user/createQuiz" extends="baseDefinition">
+        <put-attribute name="title" value="Create Quiz Page" />
+        <put-attribute name="content" value="/WEB-INF/jsp/user/action/createQuiz.jsp" />
+        <put-attribute name="right" value="" />
+    </definition>
+    
+
+    
+    <definition name="/user/addQuestions" extends="baseDefinition">
+        <put-attribute name="title" value="Add questions to the quiz." />
+        <put-attribute name="content" value="/WEB-INF/jsp/user/action/addQuestions.jsp" />
+        <put-attribute name="right" value="" />
+    </definition>
+    
+
+   
    
    <!-- admin pages -->
    

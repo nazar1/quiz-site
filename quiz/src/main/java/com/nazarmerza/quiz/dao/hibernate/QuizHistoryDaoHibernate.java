@@ -1,5 +1,6 @@
 package com.nazarmerza.quiz.dao.hibernate;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -15,6 +16,18 @@ import com.nazarmerza.quiz.domain.User;
 public class QuizHistoryDaoHibernate 
 	extends GenericDaoHibernate<QuizHistory, Long>
 	implements QuizHistoryDao{
+	
+	public List<Long> findFrequentlyTakenQuizzes(int maxResult) {
+		Criteria criteria = buildCriteria(null, Order.desc("created"));
+		criteria.setMaxResults(maxResult);
+		List<QuizHistory> ql =  criteria.list();
+		List<Long> ids = new LinkedList<Long>();
+		for(QuizHistory qh: ql){
+			ids.add(qh.getQuiz().getId());
+		}
+		return ids;
+	}
+
 
 	public List<QuizHistory> getRecentQuizTakingHistory(User user, int maxResult) {
 		Criteria criteria = buildCriteria(
@@ -30,4 +43,5 @@ public class QuizHistoryDaoHibernate
 		return criteria.list();
 	}
 
+	
 }
