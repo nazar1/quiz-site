@@ -21,6 +21,7 @@ public interface UserService {
 	public List<User> getUserFreinds(User user);
 	public void removeUserFriend(User user, User friend);
 	public User getUserFreind(Long userId, Long friendId);
+	public List<User> getRecentlyCreatedUsers(int maxResult);
 	
 	//public User getUserFreind(Long userId, Long friendId);
 	//public List<User> getUserFreinds(Long userId);

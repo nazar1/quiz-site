@@ -90,9 +90,9 @@ public class AdminServiceImpl implements AdminService{
 		return new Statistics(userCount, quizCount, activeAnnouncementCount);
 	}
 
-	public List<User> getRecentUsers(int count) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public List<User> getRecentUsers(int maxResults) {
+		return userDao.getRecentlyCreatedUsers(maxResults);
 	}
 	
 	

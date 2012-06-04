@@ -6,7 +6,7 @@
 <div class="blockContent">
 	<c:choose>
 	 <c:when test="${empty friendRequests}" >
-		<p>There are no friend Requests.</p>
+		<p class="info">There are no friend Requests.</p>
 	</c:when>
 	<c:otherwise>
 	<table>
