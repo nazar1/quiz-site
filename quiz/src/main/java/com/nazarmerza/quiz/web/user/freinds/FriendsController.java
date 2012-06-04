@@ -21,12 +21,12 @@ import com.nazarmerza.quiz.service.UserService;
 @Controller
 @RequestMapping("/user")
 @SessionAttributes("currentFriend")
-public class FriendsManagerController {
+public class FriendsController {
 	
 	private UserService userService;
 	
 	@Autowired
-	public FriendsManagerController(UserService userService){
+	public FriendsController(UserService userService){
 		this.userService = userService;
 	}
 

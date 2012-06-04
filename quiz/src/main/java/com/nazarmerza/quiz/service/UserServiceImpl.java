@@ -89,6 +89,11 @@ public class UserServiceImpl implements UserService{
 		userDao.save(user);
 		userDao.save(friend);
 	}
+	
+	@Transactional
+	public List<User> getRecentlyCreatedUsers(int maxResult){
+		return userDao.getRecentlyCreatedUsers(maxResult);
+	}
 	/*
 	public List<User> getUserFreinds(User user) {
 		if (user == null) return null;
@@ -133,10 +138,7 @@ public class UserServiceImpl implements UserService{
 		return userDao.findById(user.getId());
 	}
 	
-	@Transactional
-	public List<User> getRecentUsers(int count){
-		return userDao.getRecentlyCreatedUsers(10);
-	}
+	
 	
 	
 

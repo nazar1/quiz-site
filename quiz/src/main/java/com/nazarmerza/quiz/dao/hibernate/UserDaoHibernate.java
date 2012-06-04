@@ -80,5 +80,4 @@ public class UserDaoHibernate
 		return criteria.list();
 	}
 	
-	
 }

@@ -5,41 +5,61 @@
 
 
 
-	<div id="announcements">
-		<h4>Announcements</h4>
+<div id="announcements">
+	<h4>Announcements</h4>
 
-		<table>
+	<table>
 
-			<c:forEach items="${announcements}" var="announcement">
-				<tr>
-					<td class="text"><c:out value="${announcement.announcement}" /></td>
-					<td class="date"><fmt:formatDate type="date" dateStyle="short"
-							value="${announcement.created}" /></td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
-
-	<div>
-
-		<h4>Your recently created quizes</h4>
-
-		<c:forEach items="${recentUserCreatedQuizes}" var="quiz">
-			<table class="detailsList">
-				<tr>
-					<td><c:out value="${quiz.quizTitle}" /></td>
-					<td class="date"><fmt:formatDate type="date" dateStyle="short"
-							value="${quiz.created}" /></td>
-				</tr>
-				<tr>
-					<td><c:out value="${quiz.description}" /></td>
-				</tr>
-			</table>
+		<c:forEach items="${announcements}" var="announcement">
+			<tr>
+				<td class="text"><c:out value="${announcement.announcement}" /></td>
+				<td class="date"><fmt:formatDate type="date" dateStyle="short"
+						value="${announcement.created}" /></td>
+			</tr>
 		</c:forEach>
+	</table>
+</div>
 
-	</div>
+<div>
 
-	<div>
+	<h4>Your recently created quizes</h4>
+	<c:forEach items="${recentUserCreatedQuizes}" var="quiz">
+		<div id="quizDescription">
+			<table>
+				<tr>
+					<td><span class="text2">
+					<c:out	value="  ${quiz.quizTitle}" /></span>
+					</td> 
+					<td class="date"><fmt:formatDate type="date" dateStyle="short"
+						value="${quiz.created}" /></td>
+				</tr>
+				<tr>
+				<td>
+					<c:out	value="${quiz.description}" /></td>
+				</tr>
+
+			</table>
+		</div>
+	</c:forEach>
+
+
+
+	<c:forEach items="${recentUserCreatedQuizes}" var="quiz">
+		<table class="detailsList">
+			<tr>
+				<td><c:out value="${quiz.quizTitle}" /></td>
+				<td class="date"><fmt:formatDate type="date" dateStyle="short"
+						value="${quiz.created}" /></td>
+			</tr>
+			<tr>
+				<td><c:out value="${quiz.description}" /></td>
+			</tr>
+		</table>
+	</c:forEach>
+
+</div>
+
+<div>
 	<h4>Your recently quiz-taking activities</h4>
 	<table>
 		<tr>
@@ -61,22 +81,22 @@
 	</table>
 </div>
 
-	<h4>All Recently Created Quizes</h4>
-	<table>
+<h4>All Recently Created Quizes</h4>
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Description</th>
+		<th>Category</th>
+		<th>Creation Date</th>
+	</tr>
+	<c:forEach items="${recentCreatedQuizes}" var="quiz">
 		<tr>
-			<th>Title</th>
-			<th>Description</th>
-			<th>Category</th>
-			<th>Creation Date</th>
-		</tr>
-		<c:forEach items="${recentCreatedQuizes}" var="quiz">
-			<tr>
-				<td><c:out value="${quiz.quizTitle}" /></td>
-				<td><c:out value="${quiz.description}" /></td>
-				<td><c:out value="${quiz.category}" /></td>
-				<td><fmt:formatDate type="date" value="${quiz.created}" /></td>
+			<td><c:out value="${quiz.quizTitle}" /></td>
+			<td><c:out value="${quiz.description}" /></td>
+			<td><c:out value="${quiz.category}" /></td>
+			<td><fmt:formatDate type="date" value="${quiz.created}" /></td>
 
-			</tr>
-		</c:forEach>
-	</table>
+		</tr>
+	</c:forEach>
+</table>
 

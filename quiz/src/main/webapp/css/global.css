@@ -144,6 +144,23 @@ a:hover{
     padding: 8px;
 }
 
+.info {
+	color: #0E6273;
+    font-weight: bold;
+    margin: 16px;
+    padding: 8px;
+}
+
+.capFirstLetter {
+	text-transfrom: capitalize;
+}
+
+.text2 {
+	color: #0E6273;
+    font-weight: normal;
+    margin-right: 5px;
+}
+
 /************** error styles *************/
 div.error {
 	color: red;
@@ -341,8 +358,10 @@ input[type="submit"]:hover , input[type="reset"]:hover {
 }
 
 #quizDescription {
-	
+	border-bottom: 1px solid #E8E8E8;
+	margin-bottom: 20px;
 }
+
 
 #middle table {
 	width: 100%;

@@ -15,7 +15,7 @@ public interface AdminService {
 	public void deactivateAnnouncement(Long id);
 	public void deleteAnnouncement(Long id);
 	
-	public List<User> getRecentUsers(int count);
+	public List<User> getRecentUsers(int maxResults);
 	
 	public void removeUserAccount(Long id);
 	public void promoteUserStatus(Long id);
