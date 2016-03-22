@@ -1,0 +1,1 @@
+A social networking site build around the idea of users creating and taking quizzes.
